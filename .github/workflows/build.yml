@@ -48,7 +48,11 @@ jobs:
         with:
           context: .
           platforms: linux/amd64
-          push: ${{ github.event_name == 'push' && github.ref == 'refs/heads/main' }}
+          # Always re-resolve the base image so channel tags like
+          # java:27-ubuntu26.10 pick up the latest runtime build.
+          pull: true
+          # Push on push-to-main and manual runs from main, but never on PRs.
+          push: ${{ (github.event_name == 'push' && github.ref == 'refs/heads/main') || (github.event_name == 'workflow_dispatch' && github.ref == 'refs/heads/main') }}
           tags: |
             ${{ env.IMAGE }}:latest
             ${{ env.IMAGE }}:${{ github.sha }}
