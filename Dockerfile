@@ -5,4 +5,4 @@ ENV TZ=Asia/Jakarta
 COPY --chown=10001:10001 target/app.jar /app/app.jar
 
 EXPOSE 7070
-ENTRYPOINT ["java", "-Duser.timezone=Asia/Jakarta", "-jar", "/app/app.jar"]
+ENTRYPOINT ["java", "-jar", "/app/app.jar"]
