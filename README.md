@@ -2,7 +2,7 @@
 
 Javalin hello world minimal, dijalankan di JRE 27.
 
-- JDK: Temurin 27.0.1.1+4
+- JDK: Liberica 27 (CI pakai `distribution: liberica`, runner `ubuntu-26.04`)
 - Javalin: 7.3.0 (Jetty 12, EE10 Servlet)
 - Build tool: Maven (tanpa wrapper, pakai `mvn` system)
 - Image runtime: `ghcr.io/agungdh/chiseled-runtimes/java:27-ubuntu26.10` (Liberica JRE 27)
