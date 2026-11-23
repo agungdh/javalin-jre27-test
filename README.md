@@ -50,6 +50,9 @@ docker run --rm -p 7070:7070 ghcr.io/agungdh/javalin-jre27-test:latest
 
 Image di-push hanya saat push ke `main`, dengan tag `latest` dan `<commit-sha>`.
 
+Timezone container di-set ke `Asia/Jakarta` lewat `ENV TZ` dan `-Duser.timezone`.
+Bisa dioverride saat run: `docker run -e TZ=UTC -p 7070:7070 javalin-jre27-test`.
+
 ## CI
 
 Workflow `.github/workflows/build.yml` (push ke `main`, pull request, manual):
