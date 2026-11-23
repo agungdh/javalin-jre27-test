@@ -14,6 +14,7 @@ pom.xml
 Dockerfile
 .github/workflows/build.yml
 src/main/java/App.java
+src/main/resources/simplelogger.properties
 ```
 
 ## Build
@@ -33,6 +34,13 @@ java -jar target/app.jar
 ```
 
 Lalu buka http://localhost:7070 — response-nya `Hello World`.
+
+Request ditangani pakai virtual thread (`config.concurrency.useVirtualThreads = true`) dan
+setiap hit dicatat ke log, dengan timestamp dari `src/main/resources/simplelogger.properties`:
+
+```
+2026-11-23 10:15:42.123 WIB [virtual-...] INFO App - GET / from 127.0.0.1 -> Hello World
+```
 
 ## Docker
 

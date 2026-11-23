@@ -6,9 +6,12 @@ public class App {
     private static final Logger log = LoggerFactory.getLogger(App.class);
 
     public static void main(String[] args) {
-        Javalin.create(config -> config.routes.get("/", ctx -> {
-            log.info("{} {} from {} -> Hello World", ctx.method(), ctx.path(), ctx.ip());
-            ctx.result("Hello World");
-        })).start(7070);
+        Javalin.create(config -> {
+            config.concurrency.useVirtualThreads = true;
+            config.routes.get("/", ctx -> {
+                log.info("{} {} from {} -> Hello World", ctx.method(), ctx.path(), ctx.ip());
+                ctx.result("Hello World");
+            });
+        }).start(7070);
     }
 }
